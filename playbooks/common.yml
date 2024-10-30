@@ -3,10 +3,18 @@
   hosts: webservers,nfs,dbserver
   become: yes
   tasks:
-    - name: Ensure Wireshark is at the latest version
+    - name: Ensure Wireshark is at the latest version on Debian/Ubuntu
+      apt:
+        name: wireshark
+        state: latest
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Ensure Wireshark is at the latest version on RedHat/CentOS
       yum:
         name: wireshark
         state: latest
+      when: ansible_facts['os_family'] == 'RedHat'
+
 
     - name: Create a test directory
       file:
@@ -36,6 +44,7 @@
       apt:
         name: wireshark
         state: latest
+      when: ansible_facts['os_family'] == 'Debian'
 
     - name: Create a test directory
       file:
