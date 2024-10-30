@@ -24,7 +24,7 @@
       command: timedatectl set-timezone Africa/Lagos
 
 
-- name: Update and configure LB server
+- name: Update and configure Load Balancer server
   hosts: lb
   become: yes
   tasks:
