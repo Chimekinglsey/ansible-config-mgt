@@ -1,12 +1,12 @@
 [nfs]
-3.234.177.91 ansible_user=ec2-user
+34.205.166.86 ansible_user=ec2-user
 
 [webservers]
-18.209.214.250 ansible_user=ec2-user
-44.203.206.95 ansible_user=ec2-user
+52.54.65.194 ansible_user=ec2-user
+34.200.247.140 ansible_user=ec2-user
 
 [dbserver]
-3.216.23.143 ansible_user=ubuntu
+34.201.26.19 ansible_user=ubuntu
 
 [lb]
-44.193.15.107 ansible_user=ubuntu
+3.234.229.137 ansible_user=ubuntu
