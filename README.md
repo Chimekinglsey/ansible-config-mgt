@@ -123,5 +123,3 @@ ansible-playbook -i inventory playbook.yml
 
 This repository provides a basic setup for anyone starting with Ansible. Feel free to customize and extend the roles and playbooks based on your infrastructure needs.
 ```
-
-This `README.md` template provides a clear and organized introduction to a basic Ansible configuration setup, with instructions for playbook execution and troubleshooting tips. Let me know if you'd like any customization based on specific configurations!
