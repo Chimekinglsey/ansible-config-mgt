@@ -99,7 +99,7 @@ For a role `example-role`, place your tasks, variables, and templates in the res
 192.168.1.11
 
 [nfs]
-192.168.1.9
+192.168.1.15
 
 [db]
 192.168.1.20
