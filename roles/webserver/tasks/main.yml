@@ -11,6 +11,15 @@
     name: "git"
     state: present
 
+- name: Create /var/www/uat directory if it doesn't exist
+  become: true
+  ansible.builtin.file:
+    path: /var/www/uat
+    state: directory
+    mode: '0755'
+    owner: apache
+    group: apache
+
 - name: clone a repo
   become: true
   ansible.builtin.git:
@@ -20,16 +29,37 @@
 
 - name: copy html content to one level up
   become: true
-  command: cp -r /var/www/uat/html/html/ /var/www/uat
+  command: cp -r /var/www/uat/html/html/ /var/www/uat/
+  args:
+    creates: /var/www/uat/html  # Prevents copying if destination exists
+  ignore_errors: yes  # Continue if source doesn't exist
 
-- name: Start service httpd, if not started
+- name: Set proper ownership and permissions for web content
+  become: true
+  ansible.builtin.file:
+    path: /var/www
+    state: directory
+    mode: '0755'
+    owner: apache
+    group: apache
+    recurse: yes
+
+- name: Configure SELinux for web content
+  become: true
+  ansible.builtin.command: restorecon -Rv /var/www
+  when: ansible_selinux.status == "enabled"
+  ignore_errors: yes
+
+- name: Start and enable httpd service
   become: true
   ansible.builtin.service:
     name: httpd
     state: started
+    enabled: yes
 
 - name: recursively remove /var/www/uat/html/html/ directory
   become: true
   ansible.builtin.file:
     path: /var/www/uat/html/html
     state: absent
+  ignore_errors: yes  # Continue if directory doesn't exist
