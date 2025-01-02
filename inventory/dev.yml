@@ -1,13 +1,11 @@
-[nfs]
-34.205.166.86 ansible_user=ec2-user
+[tooling]
 
-[webservers]
-52.54.65.194 ansible_user=ec2-user
-34.200.247.140 ansible_user=ec2-user
+[todo]
 
-[dbserver]
-34.201.26.19 ansible_user=ubuntu
+[nginx]
 
-[lb]
-3.234.229.137 ansible_user=ubuntu
+[db:vars]
+ansible_user=ec2-user
+ansible_python_interpreter=/usr/bin/python
 
+[db]
