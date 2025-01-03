@@ -1,11 +1,16 @@
 [tooling]
-
-[todo]
+13.247.62.220
 
 [nginx]
-
-[db:vars]
-ansible_user=ec2-user
-ansible_python_interpreter=/usr/bin/python
+13.246.39.104
 
 [db]
+13.246.11.65
+
+[all:vars]
+ansible_user=ubuntu
+ansible_python_interpreter=/usr/bin/python3
+
+# [todo]
+# 13.247.96.158
+

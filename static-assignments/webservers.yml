@@ -1,0 +1,47 @@
+# Install nginx on webservers
+- name: Install nginx
+  hosts: nginx
+  become: yes
+  tasks:
+    - name: Install nginx package
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+      notify:
+        - start nginx
+
+    - name: Enable and start nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+# Clone tooling repository (all OS is Ubuntu)
+- name: Clone tooling repository
+  hosts: tooling
+  become: yes
+  tasks:
+    - name: Clone tooling repository
+      git:
+        repo: git@github.com:Chimekinglsey/stehub-tooling.git
+        dest: /var/www/html/tooling
+        update: yes
+
+# Install MySQL and set up user
+- name: Install MySQL and set up user
+  hosts: db
+  become: yes
+  tasks:
+    - name: Install MySQL server
+      apt:
+        name: mysql-server
+        state: present
+        update_cache: yes
