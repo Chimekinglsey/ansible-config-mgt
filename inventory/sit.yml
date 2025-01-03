@@ -1,0 +1,15 @@
+[tooling]
+13.245.117.104
+
+[todo]
+13.247.64.182
+
+[nginx]
+13.247.96.206
+
+[db]
+13.245.136.52
+
+[all:vars]
+ansible_user=ubuntu
+ansible_python_interpreter=/usr/bin/python3

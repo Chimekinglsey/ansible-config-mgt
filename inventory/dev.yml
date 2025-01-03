@@ -1,6 +1,9 @@
 [tooling]
 13.247.62.220
 
+[todo]
+13.247.96.158
+
 [nginx]
 13.246.39.104
 
@@ -10,7 +13,3 @@
 [all:vars]
 ansible_user=ubuntu
 ansible_python_interpreter=/usr/bin/python3
-
-# [todo]
-# 13.247.96.158
-
