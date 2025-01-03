@@ -31,7 +31,7 @@
   tasks:
     - name: Clone tooling repository
       git:
-        repo: git@github.com:Chimekinglsey/stehub-tooling.git
+        repo: https://github.com/Chimekinglsey/stehub-tooling.git
         dest: /var/www/html/tooling
         update: yes
 
